@@ -1,17 +1,18 @@
 <?php
 
-namespace Chumper\Zipper;
+namespace Amk\Zipper;
 
 use Exception;
 use Illuminate\Filesystem\Filesystem;
 use InvalidArgumentException;
 use Mockery;
+use PHPUnit\Framework\TestCase;
 use RuntimeException;
 
-class ZipperTest extends \PHPUnit_Framework_TestCase
+class ZipperTest extends TestCase
 {
     /**
-     * @var \Chumper\Zipper\Zipper
+     * @var \Amk\Zipper\Zipper
      */
     public $archive;
 
@@ -20,21 +21,21 @@ class ZipperTest extends \PHPUnit_Framework_TestCase
      */
     public $file;
 
-    protected function setUp()
+    protected function setUp() : void
     {
         $this->file = Mockery::mock(new Filesystem());
         $this->archive = new Zipper($this->file);
         $this->archive->make('foo', new ArrayArchive('foo', true));
     }
 
-    protected function tearDown()
+    protected function tearDown() : void
     {
         Mockery::close();
     }
 
     public function testMake()
     {
-        $this->assertSame('Chumper\\Zipper\\ArrayArchive', $this->archive->getArchiveType());
+        $this->assertSame('Amk\\Zipper\\ArrayArchive', $this->archive->getArchiveType());
         $this->assertSame('foo', $this->archive->getFilePath());
     }
 

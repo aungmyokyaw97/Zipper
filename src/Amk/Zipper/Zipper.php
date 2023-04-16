@@ -1,8 +1,8 @@
 <?php
 
-namespace Chumper\Zipper;
+namespace Amk\Zipper;
 
-use Chumper\Zipper\Repositories\RepositoryInterface;
+use Amk\Zipper\Repositories\RepositoryInterface;
 use Exception;
 use Illuminate\Filesystem\Filesystem;
 
@@ -87,10 +87,10 @@ class Zipper
 
         $objectOrName = $type;
         if (is_string($type)) {
-            $objectOrName = 'Chumper\Zipper\Repositories\\' . ucwords($type) . 'Repository';
+            $objectOrName = 'Amk\Zipper\Repositories\\' . ucwords($type) . 'Repository';
         }
 
-        if (!is_subclass_of($objectOrName, 'Chumper\Zipper\Repositories\RepositoryInterface')) {
+        if (!is_subclass_of($objectOrName, 'Amk\Zipper\Repositories\RepositoryInterface')) {
             throw new \InvalidArgumentException("Class for '{$objectOrName}' must implement RepositoryInterface interface");
         }
 
