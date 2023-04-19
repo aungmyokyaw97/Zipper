@@ -1,33 +1,12 @@
-# Note
-
-I haven't updated this package in a long time except merging PRs. The last time I was using this package was with PHP5.
-I archived the repository for the reason that I am no longer working with PHP (we all have to move on sometimes) and have no time to take proper care of it anymore.
-
-Feel free to read the code, to fork it or to use it in whatever way you want.
-
-## Update 25th February 2020
-
-I have merged a PR that includes a security fixe to mitigate zip directory traversal attacks. \
-**This package is still archived and should be swapped out with another package.** \
-However, as long as security fixes will come in I see it as my basic obligation to update this package on demand.
 
 # Zipper
-
-[![Build Status](https://travis-ci.org/Chumper/Zipper.png)](https://travis-ci.org/Chumper/Zipper)
-
 This is a simple Wrapper around the ZipArchive methods with some handy functions.
-
+# Original credit for the package
+## [Chumper/Zipper](https://github.com/Chumper/Zipper)
 ## Installation
-
-1. Add this package to the list of required packages, inside `composer.json`
-  * for Laravel 5: `"chumper/zipper": "1.0.x"`
-  * ~~for Laravel 4: `"chumper/zipper": "0.5.x"`~~
-2. Run `composer update`
-
-3. Go to `app/config/app.php`
-
-  * add to providers `Chumper\Zipper\ZipperServiceProvider::class`
-  * add to aliases `'Zipper' => Chumper\Zipper\Zipper::class`
+```sh
+composer require aungmyokyaw/zipper
+```
 
 You can now access Zipper with the `Zipper` alias.
 
@@ -40,7 +19,7 @@ Zipper::make('public/test.zip')->add($files)->close();
 
 ## Another example
 ```php
-$zipper = new \Chumper\Zipper\Zipper;
+$zipper = new \Amk\Zipper\Zipper;
 
 $zipper->make('test.zip')->folder('test')->add('composer.json');
 $zipper->zip('test.zip')->folder('test')->add('composer.json','test');
@@ -210,10 +189,3 @@ Example: extract all files **except** those ending with `test.php` from `src` fo
 ```php
 Zipper::make('test.zip')->folder('src')->extractMatchingRegex($path, '/^(?!.*test\.php).*$/i'); 
 ```
-
-# Development
-
-Maybe it is a good idea to add other compression functions like rar, phar or bzip2 etc...
-Everything is setup for that, if you want just fork and develop further.
-
-If you need other functions or got errors, please leave an issue on github.
