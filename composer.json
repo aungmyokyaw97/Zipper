@@ -3,7 +3,7 @@
     "type": "library",
     "description": "This is a little neat helper for the ZipArchive methods with handy functions",
     "keywords": ["laravel", "ZIP", "Archive"],
-    "license": "Apache2",
+    "license": "MIT",
     "authors": [
         {
             "name": "Aung Myo Kyaw",
